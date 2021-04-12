@@ -1,0 +1,18 @@
+#app {
+  @apply h-screen bg-center bg-no-repeat;
+  background-size: auto 100%;
+  background-image: url(../assets/bg.jfif);
+}
+
+.login-panel {
+  @apply absolute w-4/5;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  background-color: #fff;
+}
+
+.ant-form-item {
+  margin-bottom: auto;
+}
