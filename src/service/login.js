@@ -21,3 +21,13 @@ export function signUp (username, email, pwd) {
     .mountPost()
     .then(res => res.json())
 }
+
+export function check (id, token) {
+  return createFetch()
+    .setUrl('/api/account/check')
+    .setHeaders({ 'Content-Type': 'application/json;charset=UTF-8' })
+    .setBody(JSON.stringify({ id, token }), true)
+    .mountPost()
+    .then(res => res.json())
+    .then(res => res.data)
+}

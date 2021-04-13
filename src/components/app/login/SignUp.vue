@@ -37,7 +37,7 @@
           html-type="submit"
           block
         >
-          Submit
+          注册
         </a-button>
       </a-form-item>
     </a-form>

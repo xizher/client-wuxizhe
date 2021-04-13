@@ -25,7 +25,7 @@
           html-type="submit"
           block
         >
-          Submit
+          登录
         </a-button>
       </a-form-item>
     </a-form>
@@ -36,6 +36,8 @@
 import { reactive } from 'vue'
 import { signIn as signInService } from '../../../service/login'
 import useToast from '../../../hooks/useToast'
+import { useSet } from '@/hooks/useAccount'
+import { useRouter } from 'vue-router'
 const state = reactive({
   username: '',
   password: ''
@@ -45,12 +47,15 @@ const rules = {
   username: [{ required: true, message: '必填', trigger: 'change' }],
   password: [{ required: true, message: '必填', trigger: 'change' }],
 }
+const router = useRouter()
 function signIn () {
   const { username, password } = state
   signInService(username, password)
     .then(res => {
       if (res.success) {
         toast('登录成功', 'success')
+        useSet(res.account, res.token)
+        router.push('/')
       } else {
         toast('登录失败：用户名或密码错误', 'error')
       }
